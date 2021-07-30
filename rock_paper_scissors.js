@@ -12,11 +12,6 @@ function computerChoice() {
             break;
     }
 }
-function game() {
-    computer = computerChoice();
-    player = window.prompt("enter your hand");
-    console.log(playRound(player, computer));
-}
 
 function playRound(playerSelection, computerSelection) {
     ps = playerSelection.toLowerCase();
@@ -44,4 +39,18 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 
+}
+
+function game() {
+    computer = computerChoice();
+    player = window.prompt("enter your hand",)
+    console.log(playRound(player, computer));
+    alert(playRound(player, computer));
+}
+
+while(true) {
+    game();
+    if(window.prompt("do you wish to keep playing?(Y to play again)").toLowerCase()!="y") {
+        break;
+    }
 }
