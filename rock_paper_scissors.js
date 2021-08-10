@@ -28,8 +28,7 @@ function playRound(playerSelection, computerSelection) {
         if(cs == "scissors") {
             return "Scissors beats paper! You lose!";
         }else {
-            return "Hurray! You win!";switchCase
-        }
+            return "Hurray! You win!";        }
     }
     else if (ps == "scissors") {
         if(cs == "rock") {
