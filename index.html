@@ -4,11 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    <script src="rock_paper_scissors.js">
+    <div class="container">
+        <img id="enemy" src="assets/enemy-rock.png">
+    </div>
+    <div class="container"><img src=""></div>>
+    <div class="container">1
+        <input type="image" src="assets/player-rock.png" data-key="Rock"></input>
+        <input type="image" src="assets/player-scissors.png" data-key="Scissors"></input>
+        <input type="image" src="assets/player-paper.png "data-key="Paper"></input>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('input');
+        buttons.forEach(button => button.addEventListener('click',checkHand));
         
+        function checkHand(e) {
+                var hands = ["paper", "scissors", "rock"];
+                var random = (Math.floor(Math.random()*3));
+                console.log(hands[random]);
+                //console.log(this.getAttribute("data-key"));
+                var enemImg = document.getElementById("enemy");
+                var enemSrc = enemImg.getAttribute('src');
+                enemImg.setAttribute('src', `assets/enemy-${hands[random]}.png`);
+        }
     </script>
 
 </body>

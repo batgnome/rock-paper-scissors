@@ -1,3 +1,21 @@
 body {
     background-color:black;
 }
+input {
+    background-color:black;
+    border-style: solid;
+    border-color: transparent;
+    
+}
+input:hover {
+    border-style: solid;
+    
+    border-radius: 50%;
+    border-color: rgb(37, 79, 116);
+    background-color:rgb(201, 140, 28);
+}
+
+.container {
+    position: relative;
+    text-align: center 
+}
