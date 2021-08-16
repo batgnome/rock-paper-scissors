@@ -8,14 +8,22 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="scoreboard">
+        <img class="scoreboard" id="scroll" src="assets/scoreboard.png" width="200px">
+        <img class="scoreboard" id="tally1" src="">
+        <img class="scoreboard" id="tally2" src="" >
+    </div>
     <div class="container">
         <img id="enemy" src="assets/enemy-rock.png">
     </div>
-    <div class="container"><img src=""></div>>
-    <div class="container">1
-        <input type="image" src="assets/player-rock.png" data-key="Rock"></input>
-        <input type="image" src="assets/player-scissors.png" data-key="Scissors"></input>
-        <input type="image" src="assets/player-paper.png "data-key="Paper"></input>
+    <div class="move">
+        <div class="score"></div>
+        <img id="my-move" src="assets/player-rock.png">
+    </div>>
+    <div class="container choices">
+        <input type="image" src="assets/player-rock.png" data-key="rock"></input>
+        <input type="image" src="assets/player-scissors.png" data-key="scissors"></input>
+        <input type="image" src="assets/player-paper.png "data-key="paper"></input>
     </div>
     <script>
         const buttons = document.querySelectorAll('input');
@@ -23,12 +31,68 @@
         
         function checkHand(e) {
                 var hands = ["paper", "scissors", "rock"];
-                var random = (Math.floor(Math.random()*3));
-                console.log(hands[random]);
-                //console.log(this.getAttribute("data-key"));
+                var enem_selection = hands[(Math.floor(Math.random()*3))];
+                var player_selection = this.getAttribute("data-key")
+                var myMove = document.getElementById("my-move");
                 var enemImg = document.getElementById("enemy");
-                var enemSrc = enemImg.getAttribute('src');
-                enemImg.setAttribute('src', `assets/enemy-${hands[random]}.png`);
+
+                changeImage(enemImg, `assets/enemy-${enem_selection}.png`);
+                changeImage(myMove, (`assets/player-${player_selection}.png`));
+                console.log(checkWin(player_selection, enem_selection));
+        }
+        scoreboard = document.createElement("div");
+        scoreboard.className = "scoreboard";
+        document.body.appendChild(scoreboard);
+        playerscore = 0;
+        enemscore = 0;
+        function score(player) {
+            if(player==='player'){playerscore++;}else{enemscore++;}
+            console.log(playerscore);
+            console.log(enemscore);
+            renderScore(playerscore, enemscore)
+        }
+        function renderScore(score1,score2) {
+            if(score1 >5){score1 =5;}
+            if(score2 >5){score2 =5;}
+            changeImage(document.getElementById('tally1'), `assets/tally${score1}.png`);
+            changeImage(document.getElementById('tally2'), `assets/tally${score2}.png`);
+        }
+
+        function checkWin(p1, p2) {
+            if(p1===p2){
+                return "its a tie!";
+            }
+            if(p1==='paper'){
+                if(p2==='scissors'){
+                    score('enemy');
+                    return "enemy wins!";
+                } else {
+                    score('player');
+                    return "you win!";
+                }
+            }
+            if(p1==='scissors'){
+                if(p2==='rock'){
+                    score('enemy');
+                    return "enemy wins!";
+                } else {
+                    score('player');
+                    return "you win!";
+                }
+            }
+            if(p1==='rock'){
+                if(p2==='paper'){
+                    score('enemy');
+                    return "enemy wins!";
+                } else {
+                    score('player');
+                    return "you win!";
+                }
+            }
+        }
+        
+        function changeImage(src, img) {
+            src.setAttribute('src', img);
         }
     </script>
 
